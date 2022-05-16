@@ -1,4 +1,5 @@
 import React from "react";
+import BarChart from "./BarChart/BarChart";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -28,6 +29,7 @@ const Dashboard = () => {
         </div>
         <div className="content_here">
           <h3>Bar Chart</h3>
+          <BarChart />
         </div>
       </div>
     </div>
