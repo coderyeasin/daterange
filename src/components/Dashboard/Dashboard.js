@@ -5,6 +5,8 @@ import {
   AiFillDashboard,
   AiOutlineUsergroupAdd,
   AiOutlineUserAdd,
+  AiFillSetting,
+  AiOutlineLogout,
 } from "react-icons/ai";
 
 
@@ -25,10 +27,10 @@ const Dashboard = () => {
                <AiOutlineUserAdd /> Profile
               </li>
               <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-                Settings
+                <AiFillSetting /> Settings
               </li>
               <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-                Logout
+              <AiOutlineLogout/>  Logout
               </li>
             </ul>
           </nav>
