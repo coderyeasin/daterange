@@ -57,8 +57,8 @@ const BarChart = () => {
 
   return (
     <div>
-      <svg ref={barChart}></svg>
-      <button onClick={handleRandom}>click</button>
+      <svg ref={barChart}></svg> <br />
+      <button onClick={handleRandom} className="border-0 px-3 py-2 bg-primary text-light fs-4 text-capitalize my-5">click</button>
     </div>
   );
 };
