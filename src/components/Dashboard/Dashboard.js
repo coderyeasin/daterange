@@ -1,6 +1,12 @@
 import React from "react";
 import BarChart from "./BarChart/BarChart";
 import "./Dashboard.css";
+import {
+  AiFillDashboard,
+  AiOutlineUsergroupAdd,
+  AiOutlineUserAdd,
+} from "react-icons/ai";
+
 
 const Dashboard = () => {
   return (
@@ -10,19 +16,19 @@ const Dashboard = () => {
           <nav>
             <ul>
               <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-                Dashboard
+                <AiFillDashboard /> Dashboard 
               </li>
               <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-                User info
+               <AiOutlineUsergroupAdd /> User info
               </li>
               <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-                Profile
+               <AiOutlineUserAdd /> Profile
               </li>
               <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-             Settings
+                Settings
               </li>
               <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-            Logout
+                Logout
               </li>
             </ul>
           </nav>
