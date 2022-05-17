@@ -6,6 +6,10 @@ const BarChart = () => {
 
   const barChart = useRef();
 
+  //data set
+  //loop data
+  //click or move to load random numbers
+
   useEffect(() => {
     //setting up svg
     const width = 800;
