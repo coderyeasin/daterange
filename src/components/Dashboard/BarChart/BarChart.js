@@ -14,7 +14,7 @@ const BarChart = () => {
 // console.log(data)
 const highData = (data.filter((e) => e >= 200))
   const catched = highData.slice(0, 31)
-  // console.log(catched);
+  console.log(catched);
 data = catched;
   
 
@@ -63,7 +63,8 @@ data = catched;
 
   //button
   const handleRandom = () => {
-
+      //press to value change //refresh page
+    //hover to show what is evary bar number
   };
 
   return (
