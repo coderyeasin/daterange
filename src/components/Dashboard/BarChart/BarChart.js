@@ -73,7 +73,7 @@ const BarChart = () => {
         onClick={handleRandom}
         className="border-0 px-3 py-2 bg-primary text-light fs-4 text-capitalize my-5"
       >
-        Press
+        Change
       </button>
     </div>
   );
