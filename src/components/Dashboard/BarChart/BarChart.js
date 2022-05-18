@@ -2,24 +2,35 @@ import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
 const BarChart = () => {
-  const [data, setData] = useState([20, 30, 40, 50, 60]);
 
   const barChart = useRef();
+  const randomNums = 300;
+  let data = []
 
-  //data set
-  //loop data
-  //click or move to load random numbers
+  for (let i = 0; i <= randomNums; i++) {
+    // console.log(data = randomNums)
+    data.push(Math.random() * randomNums.toFixed(2))
+  }
+// console.log(data)
+const highData = (data.filter((e) => e >= 200))
+  const catched = highData.slice(0, 31)
+  // console.log(catched);
+data = catched;
+  
 
   useEffect(() => {
-    //setting up svg
-    const width = 800;
-    const height = 400;
+
+    // setting up svg
+    let width = 700;
+    let height = 300;
     const svg = d3
       .select(barChart.current)
-      .attr("width", width)
+      .attr("width", "800px")
       .attr("height", height)
       .style("overflow", "visible")
       .style("margin-top", "75px")
+      .style("margin-left", "75px")
+ 
     //   .style("background", "gray");
 
     //setting the scaling
@@ -47,18 +58,18 @@ const BarChart = () => {
         .attr('width', xScale.bandwidth())
       .attr('height', val => height - yScale(val))
   }, [data]);
+    
+  
 
   //button
   const handleRandom = () => {
-    const sizeRandom = Math.floor(Math.random() * 1000).toFixed();
-    console.log(sizeRandom);
-    setData(sizeRandom);
+
   };
 
   return (
     <div>
       <svg ref={barChart}></svg> <br />
-      <button onClick={handleRandom} className="border-0 px-3 py-2 bg-primary text-light fs-4 text-capitalize my-5">click</button>
+      <button onClick={handleRandom} className="border-0 px-3 py-2 bg-primary text-light fs-4 text-capitalize my-5">Press</button>
     </div>
   );
 };
