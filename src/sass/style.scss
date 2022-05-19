@@ -55,3 +55,64 @@
             margin-right: 10px;
         }
 }
+
+//Register
+
+.register_user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .feature_image {
+            background-image: url("../images/feature_img.jpg");
+            background-color: #f7f7f7;
+            width: 50%;
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        } p{
+            color: #8492a6;
+        }
+        .signup_form {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+                        border: 1px solid #dfdede;
+         
+            span{
+                font-size: 28px;
+                font-weight: 500;
+            }
+            .account_form{
+                width: 50%;       
+            }
+            .form-group label{
+                margin: 10px 0px;
+                color: #8492a6;
+            }.form-group .check_box{
+color: black;
+font-weight: 500;
+margin-left: 20px;
+            }
+            .btn_group{
+               .account_btn, .goggle_btn{
+background-color: #00affd;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    color: #f7f7f7;
+               } .goggle_btn{
+                   margin-left: 20px;
+               }
+            }
+        }
+}
+

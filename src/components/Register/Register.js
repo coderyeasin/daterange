@@ -3,7 +3,8 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import useFirebase from '../../Hooks/useFirebase';
 // import feature from "../../images/feature_img.jpg";
-import './Register.css'
+// import './Register.css'
+import '../../sass/style.scss'
 
 
 const required = "This field is required";
@@ -24,22 +25,20 @@ const Register = () => {
     
     return (
       <div>
-        <div className="d-flex justify-content-between align-items-center register_user">
+        <div className=" register_user">
           <div className="feature_image">
             <h3>Choose a date range</h3>
             <p className="text-center">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Quos iure
-              quis perspiciatis, consequatur amet.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
+              Quos iure quis perspiciatis, consequatur amet.
             </p>
           </div>
           <div className="signup_form">
-  
-            <form onSubmit={handleSubmit(onSubmit)} className="w-50 mx-auto">
+            <form onSubmit={handleSubmit(onSubmit)} className="account_form">
+              <span>Create an account</span>
               <div className="form-group my-3">
                 <label
                   htmlFor="fullName"
-                  className="my-2"
-                  style={{ color: "#8492a6" }}
                 >
                   Your email address
                 </label>
@@ -60,16 +59,14 @@ const Register = () => {
               <div className="form-group">
                 <label
                   htmlFor="g_pass"
-                  className="my-2"
-                  style={{ color: "#8492a6" }}
                 >
                   Your password
                 </label>
                 <input
                   className="form-control"
-                  type="text"
+                  type="password"
                   name="g_pass"
-                  {...register("email", { required: true })}
+                  {...register("g_password", { required: true })}
                 />
                 {errors.Password &&
                   errors.Password.type === "required" &&
@@ -78,16 +75,14 @@ const Register = () => {
               <div className="form-group">
                 <label
                   htmlFor="c_pass"
-                  className="my-2"
-                  style={{ color: "#8492a6" }}
                 >
                   Confirm password
                 </label>
                 <input
                   className="form-control"
-                  type="text"
+                  type="password"
                   name="c_pass"
-                  {...register("email", { required: true })}
+                  {...register("c_password", { required: true })}
                 />
                 {errors.Password &&
                   errors.Password.type === "required" &&
@@ -96,8 +91,6 @@ const Register = () => {
               <div className="form-group">
                 <label
                   htmlFor="fullName"
-                  className="my-2"
-                  style={{ color: "#8492a6" }}
                 >
                   Your full name
                 </label>
@@ -117,8 +110,6 @@ const Register = () => {
               <div className="form-group">
                 <label
                   htmlFor="PhoneNumber"
-                  className="my-2"
-                  style={{ color: "#8492a6" }}
                 >
                   Your phone number
                 </label>
@@ -141,23 +132,18 @@ const Register = () => {
                 />
                 <label
                   htmlFor="agree_btn"
-                  className="my-2 ms-3"
-                  style={{ fontWeight: "bold" }}
+                  className="check_box"
                 >
                   I read agree Terms and Conditions
                 </label>
               </div>
-              <div className="form-group">
+              <div className="form-group btn_group">
                 <input
-                  className="btn btn-primary"
-                  style={{
-                    backgroundColor: "#00affd",
-                    border: "none",
-                    outline: "none",
-                  }}
+                  className="account_btn"
                   type="submit"
                   value="Create account"
                 />
+                <input className="goggle_btn" type="submit" value="Google" />
               </div>
             </form>
           </div>
