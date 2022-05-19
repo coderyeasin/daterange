@@ -1,6 +1,6 @@
 import React from "react";
 import BarChart from "./BarChart/BarChart";
-import "./Dashboard.css";
+import "../../sass/style.scss";
 import {
   AiFillDashboard,
   AiOutlineUsergroupAdd,
@@ -17,20 +17,20 @@ const Dashboard = () => {
         <div className="aside_menu">
           <nav>
             <ul>
-              <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-                <AiFillDashboard /> Dashboard 
+              <li>
+                <AiFillDashboard className="icon" /> Dashboard
               </li>
-              <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-               <AiOutlineUsergroupAdd /> User info
+              <li >
+                <AiOutlineUsergroupAdd className="icon" /> User info
               </li>
-              <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-               <AiOutlineUserAdd /> Profile
+              <li >
+                <AiOutlineUserAdd className="icon" /> Profile
               </li>
-              <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-                <AiFillSetting /> Settings
+              <li >
+                <AiFillSetting className="icon" /> Settings
               </li>
-              <li className="my-3 text-success p-2 text-justify rounded-3 border-none">
-              <AiOutlineLogout/>  Logout
+              <li >
+                <AiOutlineLogout className="icon" /> Logout
               </li>
             </ul>
           </nav>
