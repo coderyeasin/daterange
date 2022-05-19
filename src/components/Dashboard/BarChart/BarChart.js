@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
-import '../../../sass/style.scss'
+import "../../../sass/style.scss";
 
 const BarChart = () => {
   const barChart = useRef();
@@ -21,7 +21,7 @@ const BarChart = () => {
     // setting up svg
     let width = 700;
     let height = 300;
-    
+
     const svg = d3
       .select(barChart.current)
       .attr("width", width)
@@ -29,6 +29,7 @@ const BarChart = () => {
       .style("overflow", "visible")
       .style("margin-top", "75px")
       .style("margin-left", "75px")
+      .style("float", "right");
 
     //setting the scaling
     const xScale = d3
@@ -62,18 +63,12 @@ const BarChart = () => {
   //button
   const handleRandom = () => {
     window.location.reload();
-    //hover to show what is evary bar number
   };
 
   return (
     <div className="chart_background">
       <svg ref={barChart}></svg> <br />
-      <button
-        onClick={handleRandom}
-        className="border-0 px-3 py-2 bg-primary text-light fs-4 text-capitalize my-5"
-      >
-        Change
-      </button>
+      <button onClick={handleRandom}>New Bar</button>
     </div>
   );
 };

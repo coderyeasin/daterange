@@ -36,7 +36,7 @@ const Dashboard = () => {
           </nav>
         </div>
         <div className="content_here">
-          <h3>Bar Chart</h3>
+          <h3>Randomly change this Bar chart</h3>
           <BarChart />
         </div>
       </div>
