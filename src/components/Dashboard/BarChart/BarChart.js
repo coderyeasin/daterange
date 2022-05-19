@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
+import image from "../../../images/feature_img.jpg";
+import '../../../styles/style.css'
 
 const BarChart = () => {
   const barChart = useRef();
@@ -20,13 +22,17 @@ const BarChart = () => {
     // setting up svg
     let width = 700;
     let height = 300;
+    
     const svg = d3
       .select(barChart.current)
-      .attr("width", "800px")
+      .attr("width", width)
       .attr("height", height)
+      // .append("image")
+      // .attr("xlink:href", ".jpg")
       .style("overflow", "visible")
       .style("margin-top", "75px")
-      .style("margin-left", "75px");
+      .style("margin-left", "75px")
+      .style("background-image", `${image}`);
 
     //   .style("background", "gray");
 
@@ -56,8 +62,7 @@ const BarChart = () => {
       .attr("height", (val) => height - yScale(val))
       .attr("fill", "#6C63FF")
       .append("title")
-      .text((d) => d.toFixed(2))
-    
+      .text((d) => d.toFixed(2));
   }, [data]);
 
   //button
@@ -68,7 +73,7 @@ const BarChart = () => {
 
   return (
     <div>
-      <svg ref={barChart}></svg> <br />
+      <svg className="chart_background" ref={barChart}></svg> <br />
       <button
         onClick={handleRandom}
         className="border-0 px-3 py-2 bg-primary text-light fs-4 text-capitalize my-5"
