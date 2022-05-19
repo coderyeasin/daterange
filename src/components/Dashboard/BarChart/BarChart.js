@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
-import image from "../../../images/feature_img.jpg";
-import '../../../styles/style.css'
+import '../../../sass/style.scss'
 
 const BarChart = () => {
   const barChart = useRef();
@@ -27,14 +26,9 @@ const BarChart = () => {
       .select(barChart.current)
       .attr("width", width)
       .attr("height", height)
-      // .append("image")
-      // .attr("xlink:href", ".jpg")
       .style("overflow", "visible")
       .style("margin-top", "75px")
       .style("margin-left", "75px")
-      .style("background-image", `${image}`);
-
-    //   .style("background", "gray");
 
     //setting the scaling
     const xScale = d3
@@ -72,8 +66,8 @@ const BarChart = () => {
   };
 
   return (
-    <div>
-      <svg className="chart_background" ref={barChart}></svg> <br />
+    <div className="chart_background">
+      <svg ref={barChart}></svg> <br />
       <button
         onClick={handleRandom}
         className="border-0 px-3 py-2 bg-primary text-light fs-4 text-capitalize my-5"
