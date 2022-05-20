@@ -16,11 +16,13 @@ dateInitialization();
 const useFirebase = () => {
   const [user, setUser] = useState([]);
   const [isErrors, setIsErrors] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
 
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
   const handleGoogle = () => {
+    setIsLoading(true);
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
@@ -28,11 +30,13 @@ const useFirebase = () => {
       })
       .catch((error) => {
         console.log(error.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   ///////////////////with EMAIL and Password//////////////
   const handleNewUser = (email, password) => {
+    setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         setIsErrors("");
@@ -42,11 +46,13 @@ const useFirebase = () => {
       .catch((error) => {
         console.log(error.message);
         setIsErrors(error.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   ////////////////////////User Login//////////////////
   const handleLogin = (email, password) => {
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         setIsErrors("");
@@ -55,7 +61,8 @@ const useFirebase = () => {
       .catch((error) => {
         console.log(error.message);
         setIsErrors(error.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   // user observe
@@ -66,12 +73,14 @@ const useFirebase = () => {
       } else {
         setUser({});
       }
+      setIsLoading(false);
     });
     return () => unsubscribed;
   }, [auth]);
 
   // logout
   const logOut = () => {
+      setIsLoading(true);
     const auth = getAuth();
     signOut(auth)
       .then(() => {
@@ -79,7 +88,8 @@ const useFirebase = () => {
       })
       .catch((error) => {
         // An error happened.
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return {
@@ -87,7 +97,7 @@ const useFirebase = () => {
     handleNewUser,
     handleLogin,
     isErrors,
-    user,
+    user,isLoading,
     logOut,
   };
 };
