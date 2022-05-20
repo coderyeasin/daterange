@@ -8,12 +8,12 @@ import {
   AiFillSetting,
   AiOutlineLogout,
 } from "react-icons/ai";
-import useFirebase from "../../Hooks/useFirebase";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 
 const Dashboard = () => {
-  const { user, logOut } = useFirebase();
+  const { user, logOut } = useAuth();
   const navigate = useNavigate()
   const handleLogout = () => {
     if (logOut) {

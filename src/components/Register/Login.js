@@ -1,16 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import useFirebase from "../../Hooks/useFirebase";
+import useAuth from "../../Hooks/useAuth";
 import "../../sass/style.scss";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { handleGoogle, handleLogin, isErrors } = useFirebase();
+  const { handleGoogle, handleLogin, isErrors } = useAuth();
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     // formState: { errors },
   } = useForm();

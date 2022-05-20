@@ -1,4 +1,4 @@
 # Authenticate with Random Bar chart
 
-[live](https://github.com/facebook/create-react-app).
+[live](https://cute-semolina-ea9171.netlify.app/)
 

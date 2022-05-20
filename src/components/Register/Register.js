@@ -1,11 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import useFirebase from "../../Hooks/useFirebase";
+import useAuth from "../../Hooks/useAuth";
 import "../../sass/style.scss";
 
 const Register = () => {
-  const { handleNewUser, handleGoogle, isErrors } = useFirebase();
+  const { handleNewUser, handleGoogle, isErrors } = useAuth();
   const navigate = useNavigate();
   const {
     register,
