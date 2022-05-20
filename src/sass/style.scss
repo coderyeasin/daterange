@@ -84,31 +84,45 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-                        border: 1px solid #dfdede;
+            border: 1px solid #dfdede;
          
-            span{
+            span:first-child{
                 font-size: 28px;
                 font-weight: 500;
             }
             .account_form{
                 width: 50%;       
+                p{
+                    color: tomato;
+                    margin: 10;
+                    font-size: medium;
+                }
             }
             .form-group label{
                 margin: 10px 0px;
                 color: #8492a6;
             }.form-group .check_box{
-color: black;
-font-weight: 500;
-margin-left: 20px;
+                color: black;
+                font-weight: 500;
+                margin-left: 20px;
+            }.user_connection {
+                display: block;
+                color: rebeccapurple;
+                margin: 5px 0px;
+               .login_page{
+                    text-decoration: none;
+                    margin-left: 7px;
+                }
             }
             .btn_group{
                .account_btn, .goggle_btn{
-background-color: #00affd;
-    border: none;
-    outline: none;
-    padding: 5px 15px;
-    border-radius: 5px;
-    color: #f7f7f7;
+            background-color: #00affd;
+            border: none;
+            outline: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            color: #f7f7f7;
+            margin: 10px 0px;
                } .goggle_btn{
                    margin-left: 20px;
                }
