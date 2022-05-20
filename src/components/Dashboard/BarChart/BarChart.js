@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import "../../../sass/style.scss";
 
 const BarChart = () => {
   const barChart = useRef();
   const randomNums = 300;
+  
   let data = [];
 
   for (let i = 0; i <= randomNums; i++) {

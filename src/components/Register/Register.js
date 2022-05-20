@@ -22,13 +22,10 @@ const Register = () => {
       return;
     }
 
-    if (data.email, data.password, data.fullName, data.phone) {
+    if (data.email && data.password && data.fullName && data.phone) {
       handleNewUser(data.email, data.password);
       navigate("/dashboard");
     }
-
-    console.log(data);
-    console.log(data.email, data.password);
 
     reset();
   };
