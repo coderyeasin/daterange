@@ -6,18 +6,18 @@ import "../../sass/style.scss";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { handleGoogle, handleRegistration, errorsFire } = useFirebase();
+  const { handleGoogle, handleLogin, isErrors } = useFirebase();
   const {
     register,
     handleSubmit,
     watch,
     reset,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
-    handleRegistration(data.email, data.password, data.name, navigate);
+    handleLogin(data.email, data.password);
     reset();
   };
   return (
@@ -33,7 +33,7 @@ const Login = () => {
         <div className="signup_form">
           <form onSubmit={handleSubmit(onSubmit)} className="account_form">
             <span>Log into your account</span>
-            <p>{errorsFire}</p>
+            <p>{isErrors}</p>
             <div className="form-group my-3">
               <label htmlFor="fullName">Your email address</label>
               <input
@@ -57,12 +57,8 @@ const Login = () => {
               />
             </div>
 
-       <div className="form-group btn_group">
-              <input
-                className="account_btn"
-                type="submit"
-                value="Login"
-              />
+            <div className="form-group btn_group">
+              <input className="account_btn" type="submit" value="Login" />
               <input
                 onClick={handleGoogle}
                 className="goggle_btn"

@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from "react";
 import {
   getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-
-import dateInitialization from "../firebase/firebase.init";
+import { useEffect, useState } from "react";
+import dateInitialization from "../Firebase/firebase.init";
 
 //Initialization
 dateInitialization();
 
 const useFirebase = () => {
   const [user, setUser] = useState([]);
-  const [errorsFire, setErrorsFire] = useState("");
+  const [isErrors, setIsErrors] = useState(false);
 
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
@@ -32,82 +31,65 @@ const useFirebase = () => {
       });
   };
 
-  const handleRegistration = (email, password) => {
+  ///////////////////with EMAIL and Password//////////////
+  const handleNewUser = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        // ...
+      .then((result) => {
+              setIsErrors("");
+        console.log(result.user);
+        setUser(result.user);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
+        console.log(error.message);
+        setIsErrors(error.message);
       });
   };
-  //  const handleSignIn = (email, password, location, navigate) => {
-  //    signInWithEmailAndPassword(auth, email, password)
-  //      .then((result) => {
-  //        // Signed in
-  //        setErrorsFire("");
-  //        const destination = location?.state?.from || "/dashboard";
-  //        navigate(destination);
-  //      })
-  //      .catch((error) => {
-  //        const errorCode = error.code;
-  //        console.log(error.message);
-  //        setErrorsFire(error.message);
-  //      })
 
-  //  };
-
-  const handleLoginUser = (email, password) => {
+  ////////////////////////User Login//////////////////
+  const handleLogin = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        // ...
+      .then((result) => {
+              setIsErrors("");
+        console.log(result.user);
+  
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        console.log(error.message);
+        setIsErrors(error.message);
       });
   };
 
   // user observe
-  useEffect(() => {
-    const unsubscribed = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser({});
-      }
-    });
-    return () => unsubscribed;
-  }, [auth]);
+  // useEffect(() => {
+  //   const unsubscribed = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       setUser(user);
+  //     } else {
+  //       setUser({});
+  //     }
+  //   });
+  //   return () => unsubscribed;
+  // }, [auth]);
 
   //logout
-  const logout = () => {
-    const auth = getAuth();
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        // An error happened.
-      });
-  };
+  // const logout = () => {
+  //   const auth = getAuth();
+  //   signOut(auth)
+  //     .then(() => {
+  //       // Sign-out successful.
+  //     })
+  //     .catch((error) => {
+  //       // An error happened.
+  //     });
+  // };
 
   return {
     handleGoogle,
-    handleRegistration,
-    errorsFire,
+    handleNewUser,
+    handleLogin,
+    isErrors,
     user,
-    handleLoginUser,
-    logout,
-    // handleSignIn,
+    // logout,
   };
 };
 
