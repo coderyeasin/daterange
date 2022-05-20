@@ -8,13 +8,10 @@ const BarChart = () => {
   let data = [];
 
   for (let i = 0; i <= randomNums; i++) {
-    // console.log(data = randomNums)
     data.push(Math.random() * randomNums.toFixed(2));
   }
-  // console.log(data)
   const highData = data.filter((e) => e >= 200);
   const catched = highData.slice(0, 31);
-  console.log(catched);
   data = catched;
 
   useEffect(() => {

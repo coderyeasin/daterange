@@ -8,29 +8,42 @@ import {
   AiFillSetting,
   AiOutlineLogout,
 } from "react-icons/ai";
+import useFirebase from "../../Hooks/useFirebase";
+import { useNavigate } from "react-router-dom";
 
 
 const Dashboard = () => {
+  const { user, logOut } = useFirebase();
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    if (logOut) {
+      navigate("/home");
+    }
+    
+  }
   return (
     <div>
       <div className="user_info gap-3">
         <div className="aside_menu">
           <nav>
             <ul>
+              <li>{user?.displayName}</li>
               <li>
                 <AiFillDashboard className="icon" /> Dashboard
               </li>
-              <li >
+              <li>
                 <AiOutlineUsergroupAdd className="icon" /> User info
               </li>
-              <li >
+              <li>
                 <AiOutlineUserAdd className="icon" /> Profile
               </li>
-              <li >
+              <li>
                 <AiFillSetting className="icon" /> Settings
               </li>
-              <li >
-                <AiOutlineLogout className="icon" /> Logout
+              <li>
+                <button onClick={handleLogout}>
+                  <AiOutlineLogout className="icon" /> Logout
+                </button>
               </li>
             </ul>
           </nav>

@@ -17,7 +17,13 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    handleLogin(data.email, data.password);
+    if (!data.email && data.password === true) {
+      alert("wrong information provided");
+    } else {
+      handleLogin(data.email, data.password);
+      navigate('/dashboard')
+    }
+
     reset();
   };
   return (
@@ -48,12 +54,12 @@ const Login = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="g_pass">Your password</label>
+              <label htmlFor="password">Your password</label>
               <input
                 className="form-control"
                 type="password"
-                name="g_pass"
-                {...register("g_password", { required: true })}
+                name="password"
+                {...register("password", { required: true })}
               />
             </div>
 

@@ -4,17 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import useFirebase from "../../Hooks/useFirebase";
 import "../../sass/style.scss";
 
-const required = "This field is required";
-const maxLength = "Your input exceed maximum length";
-const errorMessage = (error) => {
-  return <div className="invalid-feedback">{error}</div>;
-};
-
-
 const Register = () => {
-
   const { handleNewUser, handleGoogle, isErrors } = useFirebase();
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -24,17 +16,20 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
- 
     if (data.password !== data.password2) {
       alert("password did not match");
       reset();
       return;
     }
-    handleNewUser(data.email, data.password);
+
+    if (data.email, data.password, data.fullName, data.phone) {
+      handleNewUser(data.email, data.password);
+      navigate("/dashboard");
+    }
 
     console.log(data);
     console.log(data.email, data.password);
-    
+
     reset();
   };
 
@@ -59,13 +54,18 @@ const Register = () => {
                 type="email"
                 name="Email"
                 {...register("email", {
-                  required: true,
-                  pattern: /^\S+@\S+$/i,
+                  required: "This field is required",
+                  pattern: {
+                    value: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i,
+                    message: "Invalid email",
+                  },
                 })}
               />
-              {errors.Email &&
-                errors.Email.type === "required" &&
-                errorMessage(required)}
+              {errors.email && (
+                <span className="d-block my-2 text-danger">
+                  {errors.email.message}
+                </span>
+              )}
             </div>
 
             <div className="form-group">
@@ -75,13 +75,24 @@ const Register = () => {
                 type="password"
                 name="Password"
                 {...register("password", {
-                  required: true,
-                  maxLength: 15,
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Minimum required is 6",
+                  },
+                  pattern: {
+                    value:
+                      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/i,
+                    message:
+                      "Uppercase, lowercase, number, special character",
+                  },
                 })}
               />
-              {errors.Password &&
-                errors.Password.type === "required" &&
-                errorMessage(required)}
+              {errors.password && (
+                <span className="d-block my-2 text-danger">
+                  {errors.password.message}
+                </span>
+              )}
             </div>
             <div className="form-group">
               <label htmlFor="password">Confirm password</label>
@@ -90,13 +101,23 @@ const Register = () => {
                 type="password"
                 name="Password"
                 {...register("password2", {
-                  required: true,
-                  maxLength: 15,
+                  required: "Confirm password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Minimum required is 6",
+                  },
+                  pattern: {
+                    value:
+                      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/i,
+                    message: "Doesn't matched password",
+                  },
                 })}
               />
-              {errors.Password &&
-                errors.Password.type === "required" &&
-                errorMessage(required)}
+              {errors.password2 && (
+                <span className="d-block my-2 text-danger">
+                  {errors.password2.message}
+                </span>
+              )}
             </div>
             <div className="form-group">
               <label htmlFor="fullName">Your full name</label>
@@ -104,15 +125,27 @@ const Register = () => {
                 className="form-control"
                 type="text"
                 name="FullName"
-                {...register("fullName", { required: true, maxLength: 30 })}
+                {...register("fullName", {
+                  required: "Full Name is required",
+                  minLength: {
+                    value: 5,
+                    message: "Min required length is 5",
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: "Maximum allowed length is 50",
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z ]{2,30}$/i,
+                    message: "Allowed only character",
+                  },
+                })}
               />
-              <p>{console.log(errorMessage(maxLength).props)}</p>
-              {errors.FullName &&
-                errors.FullName.type === "required" &&
-                errorMessage(required)}
-              {errors.FullName &&
-                errors.FullName.type === "maxLength" &&
-                errorMessage(maxLength)}
+              {errors.fullName && (
+                <span className="d-block my-2 text-danger">
+                  {errors.fullName.message}
+                </span>
+              )}
             </div>
             <div className="form-group">
               <label htmlFor="PhoneNumber">Your phone number</label>
@@ -120,11 +153,20 @@ const Register = () => {
                 className="form-control"
                 type="tel"
                 name="PhoneNumber"
-                {...register("phone", { maxLength: 14 })}
+                {...register("phone", {
+                  required: "Phone Number is required",
+                  pattern: {
+                    value:
+                      /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/i,
+                    message: "Invalid phone number, length:10",
+                  },
+                })}
               />
-              {errors.PhoneNumber &&
-                errors.PhoneNumber.type === "maxLength" &&
-                errorMessage(maxLength)}
+              {errors.phone && (
+                <span className="d-block my-2 text-danger">
+                  {errors.phone.message}
+                </span>
+              )}
             </div>
 
             <div className="form-group">
@@ -132,11 +174,18 @@ const Register = () => {
                 type="checkbox"
                 name="agree_btn"
                 id="agree_btn"
-                {...register("agree")}
+                {...register("agree", {
+                  required: "Checkbox is required",
+                })}
               />
               <label htmlFor="agree_btn" className="check_box">
                 I read agree Terms and Conditions
               </label>
+              {errors.agree && (
+                <span className="d-block my-2 text-danger">
+                  {errors.agree.message}
+                </span>
+              )}
             </div>
 
             <div className="form-group btn_group">

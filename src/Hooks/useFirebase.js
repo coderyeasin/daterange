@@ -35,7 +35,7 @@ const useFirebase = () => {
   const handleNewUser = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
-              setIsErrors("");
+        setIsErrors("");
         console.log(result.user);
         setUser(result.user);
       })
@@ -49,9 +49,8 @@ const useFirebase = () => {
   const handleLogin = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
-              setIsErrors("");
+        setIsErrors("");
         console.log(result.user);
-  
       })
       .catch((error) => {
         console.log(error.message);
@@ -60,28 +59,28 @@ const useFirebase = () => {
   };
 
   // user observe
-  // useEffect(() => {
-  //   const unsubscribed = onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       setUser(user);
-  //     } else {
-  //       setUser({});
-  //     }
-  //   });
-  //   return () => unsubscribed;
-  // }, [auth]);
+  useEffect(() => {
+    const unsubscribed = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser({});
+      }
+    });
+    return () => unsubscribed;
+  }, [auth]);
 
-  //logout
-  // const logout = () => {
-  //   const auth = getAuth();
-  //   signOut(auth)
-  //     .then(() => {
-  //       // Sign-out successful.
-  //     })
-  //     .catch((error) => {
-  //       // An error happened.
-  //     });
-  // };
+  // logout
+  const logOut = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   return {
     handleGoogle,
@@ -89,7 +88,7 @@ const useFirebase = () => {
     handleLogin,
     isErrors,
     user,
-    // logout,
+    logOut,
   };
 };
 
