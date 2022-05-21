@@ -27,7 +27,7 @@ const Dashboard = () => {
         <div className="aside_menu">
           <nav>
             <ul>
-              <li>{user?.displayName}</li>
+              <li>{user?.email}</li>
               <li>
                 <AiFillDashboard className="icon" /> Dashboard
               </li>

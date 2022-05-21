@@ -11,7 +11,7 @@ const Register = () => {
     register,
     handleSubmit,
     // watch,
-    reset,
+    reset,trigger,
     formState: { errors },
   } = useForm();
 
@@ -57,6 +57,9 @@ const Register = () => {
                     message: "Invalid email",
                   },
                 })}
+                onKeyUp={() => {
+                  trigger("email");
+                }}
               />
               {errors.email && (
                 <span className="d-block my-2 text-danger">
@@ -80,10 +83,12 @@ const Register = () => {
                   pattern: {
                     value:
                       /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/i,
-                    message:
-                      "Uppercase, lowercase, number, special character",
+                    message: "Uppercase, lowercase, number, special character",
                   },
                 })}
+                onKeyUp={() => {
+                  trigger("password");
+                }}
               />
               {errors.password && (
                 <span className="d-block my-2 text-danger">
@@ -109,6 +114,9 @@ const Register = () => {
                     message: "Doesn't matched password",
                   },
                 })}
+                onKeyUp={() => {
+                  trigger("password2");
+                }}
               />
               {errors.password2 && (
                 <span className="d-block my-2 text-danger">
@@ -137,6 +145,9 @@ const Register = () => {
                     message: "Allowed only character",
                   },
                 })}
+                onKeyUp={() => {
+                  trigger("fullName");
+                }}
               />
               {errors.fullName && (
                 <span className="d-block my-2 text-danger">
@@ -158,6 +169,9 @@ const Register = () => {
                     message: "Invalid phone number, length:10",
                   },
                 })}
+                onKeyUp={() => {
+                  trigger("phone");
+                }}
               />
               {errors.phone && (
                 <span className="d-block my-2 text-danger">
@@ -174,6 +188,9 @@ const Register = () => {
                 {...register("agree", {
                   required: "Checkbox is required",
                 })}
+                onKeyUp={() => {
+                  trigger("agree");
+                }}
               />
               <label htmlFor="agree_btn" className="check_box">
                 I read agree Terms and Conditions
