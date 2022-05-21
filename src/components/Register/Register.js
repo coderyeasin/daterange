@@ -47,7 +47,7 @@ const Register = () => {
             <div className="form-group my-3">
               <label htmlFor="fullName">Your email address</label>
               <input
-                className="form-control"
+                className={`form-control ${errors.email && "invalid"}`}
                 type="email"
                 name="Email"
                 {...register("email", {
@@ -71,7 +71,7 @@ const Register = () => {
             <div className="form-group">
               <label htmlFor="password">Your password</label>
               <input
-                className="form-control"
+                className={`form-control ${errors.password && "invalid"}`}
                 type="password"
                 name="Password"
                 {...register("password", {
@@ -99,7 +99,7 @@ const Register = () => {
             <div className="form-group">
               <label htmlFor="password">Confirm password</label>
               <input
-                className="form-control"
+                className={`form-control ${errors.password2 && "invalid"}`}
                 type="password"
                 name="Password"
                 {...register("password2", {
@@ -127,7 +127,7 @@ const Register = () => {
             <div className="form-group">
               <label htmlFor="fullName">Your full name</label>
               <input
-                className="form-control"
+                className={`form-control ${errors.fullName && "invalid"}`}
                 type="text"
                 name="FullName"
                 {...register("fullName", {
@@ -158,7 +158,7 @@ const Register = () => {
             <div className="form-group">
               <label htmlFor="PhoneNumber">Your phone number</label>
               <input
-                className="form-control"
+                className={`form-control ${errors.phone && "invalid"}`}
                 type="tel"
                 name="PhoneNumber"
                 {...register("phone", {
@@ -182,6 +182,7 @@ const Register = () => {
 
             <div className="form-group">
               <input
+                
                 type="checkbox"
                 name="agree_btn"
                 id="agree_btn"

@@ -106,6 +106,7 @@
             .form-group label{
                 margin: 10px 0px;
                 color: #8492a6;
+            
             }.form-group .check_box{
                 color: black;
                 font-weight: 500;
@@ -132,6 +133,9 @@
                    margin-left: 20px;
                }
             }
+                           .invalid {
+                               border: 1px solid red;
+                           }
         }
 }
 
